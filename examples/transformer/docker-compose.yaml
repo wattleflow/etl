@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: huggingface/transformers-cpu
+    working_dir: /workspace
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: bash -c "jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='no'"
+    volumes:
+      - data:/workspace/data
+      - notebooks:/workspace/notebooks
+    ports:
+      - "8888:8888"
+    networks:
+      - bridge
+
+volumes:
+  notebooks:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/dev/Projects/Docker/transformer/notebooks
+  data:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: /home/dev/Projects/Docker/transformer/data
+
+networks:
+  bridge:
+    driver: bridge

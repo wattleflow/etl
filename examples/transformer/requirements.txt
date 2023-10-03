@@ -1,0 +1,24 @@
+torch
+transformers
+googletrans==4.0.0-rc1
+tqdm
+psutil
+spacy
+nltk
+pdfplumber
+ftfy
+dask
+dask[dataframe]
+psycopg2
+sqlalchemy
+
+#fitz
+#jupyterthemes
+#PyMuPdf
+#sudo apt-get install libffi-dev
+# RUN python3 -m spacy download en_core_web_sm
+# RUN python3 -m pip install PyMuPdf
+# pdfplumber
+# jupyter
+# tensorflow-cpu
+# sentencepiece
