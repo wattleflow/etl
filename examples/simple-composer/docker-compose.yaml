@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+   jupyter:
+      build: huggingface/.
+      ports:
+         - "8888:8888"
+      working_dir: /workspace
+      volumes:
+         - ./notebooks:/workspace/notebooks
+         - ./data:/workspace/data
+      environment:
+         - JUPYTER_ENABLE_LAB=yes
+         - NOTEBOOK_TOKEN=kua
+      command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='no'
+
